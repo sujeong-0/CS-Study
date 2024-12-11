@@ -97,6 +97,9 @@
 
 ![](/Network/img/network_osi_tcpip_8.png)
 
+### OSI 7 계층 정리
+![](/Network/img/network_osi_tcpip_10.png)
+
 ## 2️⃣ TCP/IP 4계층
 
 ### 개념
@@ -129,3 +132,6 @@
 - TCP/UDP 기반의 `응용 프로그램`을 구현할 때 사용
     - 응용프로그램들이 네트워크서비스, 메일서비스, 웹서비스 등을 할 수 있도록 표준적인 `인터페이스`를 제공
 - 프로토콜 : SMTP, FTP, HTTP, SSH, DNS 등
+
+### TCP/IP 4계층 정리
+![](/Network/img/network_osi_tcpip_11.png)
