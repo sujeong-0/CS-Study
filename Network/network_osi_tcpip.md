@@ -3,6 +3,7 @@
 ## 1️⃣ OSI 7계층
 
 ### 개념
+![](/Network/img/network_osi_tcpip_1.png)
 
 - **네트워크 통신**이 일어나는 과정을 7단계로 나눔. 
 
@@ -19,6 +20,8 @@
 - 데이터 단위 : bit (1과 0)
 - 프로토콜 : DSL, ISDN 등
 - 장비  : 통신 케이블, 허브, 리피터
+  
+![](/Network/img/network_osi_tcpip_2.png)
 
 ### 2️⃣ 계층 - 데이터 링크 계층(DataLink Layer)
 - 데이터를 `frame` 단위로, 한 네트워크 요소에서 이웃 네트워크 요소로 전송하는 계층
@@ -31,6 +34,8 @@
 - 프로토콜 : PPP, Ethernet, Token ring, IEE 802.11(Wifi) 등
 - 장비  : 스위치, 브릿지
 
+![](/Network/img/network_osi_tcpip_3.png)
+
 ### 3️⃣ 계층 - 네트워크 계층 (Network Layer)
 - `IP`로 **도착지**를 찾고, `라우팅`을 통해 도착지까지 **최적의 경로** 탐색하는 계층
 - `패킷`을 목적지까지 전달하는 기능을 수행하며, 이 과정에서 `라우팅 알고리즘` 사용
@@ -38,6 +43,8 @@
 - 전송 계층에게 전달 받은 목적지 주소를 이용해서 패킷을 만들고, 그 목적지의 전송 계층으로 패킷 전달
 - 데이터 단위 : datagram, packet
 - 프로토콜 : **IP**, ICMP, ARP, RIP, BGP 등
+
+![](/Network/img/network_osi_tcpip_4.png)
 
 ### 4️⃣ 계층 - 전송 계층 (Transport Layer)
 - 상위 계층의 메시지를 하위 계층으로 전송하는 계층
@@ -58,6 +65,8 @@
 - 데이터 단위 : segment
 - 프로토콜 : TCP, UDP, ARP, SCTP 등
 - 장비 : GateWay
+
+![](/Network/img/network_osi_tcpip_5.png)
  
 ### 5️⃣ 계층 - 세션 계층 (Session Layer)
 - 통신을 위해, 두 컴퓨터 사이에 `연결`을 형성/유지/종료
@@ -69,6 +78,8 @@
     - 반이중 : 동시에 보내지 X - ex) 무전기
 - 데이터 단위 : message
 - 프로토콜 : NetBIOS, TLS 등
+  
+![](/Network/img/network_osi_tcpip_6.png)
 
 ### 6️⃣ 계층 - 표현 계층 (Presentation Layer)
 - 응용 계층으로부터 받은 데이터를 수신측에 **알맞는 코드 및 형식**으로 변환하거나, 그 반대의 과정을 수행. 필요시에 **암호화/복호화** 수행
@@ -76,11 +87,15 @@
 - 데이터 단위 : message
 - 프로토콜 : ASCII, MPEG 등
 
+![](/Network/img/network_osi_tcpip_7.png)
+
 ### 7️⃣ 계층 - 응용 계층 (Application Layer)
 - 사용자에게 가장 가까운 계층이며 `응용 프로그램`을 통해 사용자와 직접적으로 상호작용
     - 응용 서비스를 수행하고 사용자 인터페이스를 제공
 - 데이터 단위 : message
 - 프로토콜 : HTTP, SMTP, FTP, SIP 등
+
+![](/Network/img/network_osi_tcpip_8.png)
 
 ## 2️⃣ TCP/IP 4계층
 
@@ -90,6 +105,8 @@
     - ex) 네트워크 계층(IP)에서 잘못된 패킷을 전송하면, 상위 계층(TCP/UDP)에서 이를 바로잡아야 하거나 에러가 전파됨
 - ARPANET이 개발된 이후 현재의 인터넷으로 발전해나가는 과정에서 대부분의 데이터 통신이 **TCP와 IP 기반**으로 이루어졌기 때문에, 인터넷 프로토콜 그 자체를 표현하는 용어
 
+![](/Network/img/network_osi_tcpip_9.png)
+
 ### 1️⃣ 계층 - 네트워크 인터페이스(Network Interface) 계층 
 - OSI 7계층의 물리 계층과 데이터 링크 계층에 해당
 - HW 요소와 관련된 모든 것을 지원하는 계층
@@ -98,7 +115,7 @@
 
 ### 2️⃣ 계층 - 인터넷 계층(Internet Layer)
 - OSI 7계층의 네트워크 계층에 해당
-- 통신 노드 간의 ****`IP 패킷을 전송`하는 기능과 `라우팅` 기능을 담당
+- 통신 노드 간의 `IP 패킷을 전송`하는 기능과 `라우팅` 기능을 담당
     - 상위 전송 계층에서 받은 데이터에 IP 패킷 헤더를 붙여, IP패킷을 만들어 전송
 - 프로토콜 : IP, ICMP, ARP, RARP, OSPF, BGP 등
 
