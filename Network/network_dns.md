@@ -146,3 +146,4 @@ www.example.com.    CNAME  example.com
 - [Techopedia - Domain](https://www.techopedia.com/definition/1326/domain-networking)
 - [도메인 (네트워크)이란 | 도메인 네임 (인터넷) | DNS 서버 설명](https://www.youtube.com/watch?v=Il9Y-b9Qv0g)
 - [🌐 DNS 레코드 종류 ★ 완벽 정리](https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-DNS-%EB%A0%88%EC%BD%94%EB%93%9C-%EC%A2%85%EB%A5%98-%E2%98%85-%EC%95%8C%EA%B8%B0-%EC%89%BD%EA%B2%8C-%EC%A0%95%EB%A6%AC#a_%EB%A0%88%EC%BD%94%EB%93%9C_vs_cname_%EC%9E%A5%EB%8B%A8%EC%A0%90)
+- [What is DNS? - Introduction to Domain Name System](https://www.youtube.com/watch?v=e2xLV7pCOLI)
