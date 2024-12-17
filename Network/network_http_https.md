@@ -17,7 +17,7 @@
 ---
 
 ## Request & Response
-![요청,응답 구조](Network/img/network_http_1.png)
+![](/Network/img/network_http_1.png)
 
 ### 1. **GET**
 - 서버에서 데이터를 요청하여 가져온다.
@@ -88,7 +88,7 @@ HTTP에 **데이터 암호화**가 추가된 프로토콜
 - **SSL**이나 **TLS** 프로토콜을 통해 세션 데이터를 암호화.
 
 
-![http와 https 계층](Network/img/network_http_2.png)
+![](/Network/img/network_http_2.png)
 ---
 
 ## SSL
@@ -125,7 +125,7 @@ HTTP에 **데이터 암호화**가 추가된 프로토콜
 - **단점**:  
   공개키 암호화 방식의 알고리즘은 계산이 느려지는 경향이 있다.
 
-![SSL 통신과정](Network/img/network_http_3.png)
+![](/Network/img/network_http_3.png)
 
 ## 참고 자료
 
