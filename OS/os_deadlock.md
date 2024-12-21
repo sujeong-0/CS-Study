@@ -106,3 +106,10 @@
     - 이때 순서는 무작위로 또는 특정 기준(우선순위 등)에 따라 결정된다.
 2. 자원 선점
     - 데드락을 일으킨 프로세스로부터 자원을 회수하여 다른 프로세스에 재할당하여 문제를 해결한다.
+
+# 출처
+https://velog.io/@shinyejin0212/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9COS-7.-Deadlocks
+
+https://persi0815.tistory.com/6
+
+https://www.boardinfinity.com/blog/deadlock-in-operating-system/
