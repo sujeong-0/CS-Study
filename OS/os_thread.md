@@ -29,7 +29,7 @@
 - 레지스터 집합: CPU가 사용 중인 레지스터 상태(PC, Stack Pointer, 일반 register 등)는 스레드마다 달라집니다.
 - 스택: 스레드는 각각 고유한 스택을 가집니다. 지역변수, 함수 호출 기록(call stack) 등이 저장됩니다.
 
-_<스레드 구성요소 이미지>_
+![](/OS/img/os_thread_1.png)
 
 # Multithreading
 
