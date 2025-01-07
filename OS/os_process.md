@@ -24,6 +24,9 @@
 | **Heap** | 런타임에 동적으로 메모리에 할당되는 데이터 | 실행 중에 생성되는 인스턴스에 대한 정보 |
 | **Stack** | 함수가 호출되면 stack 공간이 생성. 함수가 종료되면 제거됨 | 지역 변수, 매개 변수, return 주소 등 |
 
+![](/OS/img/os_process_1.png)
+
+
 ## 프로세스 상태
 
 프로세스의 상태에는 5가지가 있다.
@@ -37,6 +40,8 @@
 | **종료 (terminated)** | 프로세스의 실행이 완료되어 종료된 상태. 할당된 자원이 해제되고, 프로세스의 메모리 공간은 OS에 반환됨                                            |
 
 프로세스 전이도
+![](/OS/img/os_process_2.png)
+
 
 ## **PCB(Process Control Block)**
 
@@ -78,3 +83,8 @@ PC(Program Counter)와 SP(Stack Pointer)이며, 프로세스의 실행 및 메�
 SP는 **현재 실행 중인 프로세스의 스택(Stack)의 최상단을 가리키는 레지스터**다. 즉, SP는 스택 프레임(Stack Frame)의 시작 주소를 가리키며, 스택에 데이터를 저장하거나 불러올 때 사용된다. 함수 호출 시에는 SP가 감소하여 스택에 새로운 스택 프레임(스택 공간)을 생성하고, 함수가 반환되면 SP가 증가하여 이전 스택 프레임으로 돌아간다. SP는 **프로세스의 스택 영역을 관리**하고, Stack Overflow와 같은 문제를 방지하기 위해 **제한된 메모리 영역을 사용**하는 등의 역할을 수행한다.
 
 예를 들어, 재귀함수의 경우, 가장 최근에 호출한 함수 순서대로 Stack에 쌓인다. **가장 최근에 호출된 함수**(최상단 함수)의 위치를 알고 있으면, 어디까지 함수가 호출되어 있는지 프로세스가 알 수 있다.
+
+# 출처
+[https://medium.com/ioxio/study-os-2-process-update-중-c6fe324329be](https://medium.com/ioxio/study-os-2-process-update-%EC%A4%91-c6fe324329be)
+
+https://itwiki.kr/w/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4_%EC%83%81%ED%83%9C#google_vignette
