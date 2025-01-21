@@ -121,6 +121,14 @@ h(20) = 7
 
 데이터 구조 단계에서는 딕셔너리의 부분집합 으로서 해시 테이블이 존재하지만, 실제로 사용하는 프로그래밍 언어 단계에서는 거의 같은 위계로 사용되고 있는 듯하다.
 
+# 가상 메모리 페이지 테이블
+
+[가상 메모리의 페이지 테이블](https://github.com/Hi-Tech-Study/CS-Study/blob/main/OS/os_memory.md#%EC%9E%91%EB%8F%99-%EC%9B%90%EB%A6%AC) 에서도 해시 테이블을 사용할 수 있다.
+
+이 경우, 키에 해당하는 논리 주소를 해싱 한다.
+
+해시 함수를 어떻게 정의하냐에 따라 전체적인 페이지 테이블의 사이즈를 줄일 수 있다.
+
 # 출처
 
 - [해싱과 암호화는 어떻게 다른가요?](https://docs.tosspayments.com/blog/hashing-and-encryption-difference#%ED%95%B4%EC%8B%B1%EA%B3%BC-%EC%95%94%ED%98%B8%ED%99%94%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8B%A4%EB%A5%B8%EA%B0%80%EC%9A%94)
