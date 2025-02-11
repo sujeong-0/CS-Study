@@ -1,216 +1,153 @@
 # **Factory Pattern**
-![img](./img/dp_factory_pattern_1.png)
 
 정확하게는 팩토리 메서드 패턴과 추상 팩토리 패턴이 있다.
 
-# **Factory Method Pattern**
+## **Simple Factory**
+객체를 생성하는 부분을 분리해 불필요한 의존성을 없애는 것을 팩토리 패턴, 심플 팩토리라고 부른다.
+심플 팩토리는 정확하게 말하자면 패턴은 아니며 프로그래밍에서 자주 쓰이는 관용구에 가깝다.
 
-## 팩토리 메소드 패턴이란?
-**팩토리 메소드 패턴**은 생성 패턴 중 하나다. 객체를 만들어 반환하는 함수를 제공하여 초기화 과정을 외부에서 보지 못하게 숨기고 반환 타입을 제어하는 방법이다. 인터페이스나 추상 클래스로 구현할 수 있다. **다양한 객체들을 생성할 때 사용한다.**
-
-## 예제
-스타크래프트에서 여러 종류의 유닛을 정의한 후, 건물에서 유닛을 생성하는 기능을 만들어본다고 생각해보자. 대기열에 등록된 객체들은 모두 유닛(Unit) 이지만, 실제 생성되는 유닛의 실체는 다양하다.
+아래는 심플 팩토리의 예시다.
 
 ```C++
-enum UnitType
-{
-    Marine,
-    Firebat,
-    //...
-}
-
-class Unit
-{
-    //...
-}
-
-class Marine : public Unit
-{
-    //...
-}
-
-class Firebat : public Unit
-{
-    //...
-}
-
-class Barracks
+class Pizza
 {
 public:
-    Unit createUnit(UnitType unitType);
+    virtual void prepared();
+    virtual void bake();
+    virtual void cut();
+    virtual void box();
 }
 
-Unit Barracks::createUnit(UnitType unitType)
+class CheesePizza : public Pizza
 {
-    Unit* unit = nullptr;
-    switch(unitType)
+    //...
+}
+
+class PepperoniPizza : public Pizza
+{
+    //...
+}
+
+class SimplePizzaFactory
+{
+public:
+    virtual Pizza* createPizza(string type)
     {
-        case UnitType::Marine:
-            unit = new Marine();
-        break;
-        case UnitType::Firebat:
-            unit = new Firebat();
-        break;
+        Pizza* pizza = nullptr;
+        switch(type)
+        {
+            case "CheesePizza":
+                pizza = new CheesePizza();
+                break;
+            //...
+        }
+        //...
+        return pizza;
     }
-    return unit;
 }
 
-int main()
+class PizzaStore
 {
-    Barracks barracks;
-    Unit myUnit1 = barracks.createUnit(UnitType::Marine);
-    Unit myUnit2 = barracks.createUnit(UnitType::Firebat);
-    return 0;
+    SimplePizzaFactory factory;
+public:
+    PizzaStore(SimplePizzaFactory factory)
+    {
+        this.factory = factory;
+    }
+
+    static Pizza orderPizza(string type)
+    {
+        Pizza* pizza = createPizza(type);
+        pizza->prepared();
+        pizza->bake();
+        pizza->cut();
+        pizza->box();
+        return pizza;
+    }
+}
+```
+심플 팩토리에서는 팩토리 클래스로 객체를 생성한다.
+하지만 팩토리 클래스는 `prepared()`, `bake()`, `cut()`, `box()`와 같은 후처리 함수의 호출까지는 담당하지 않는다.
+이 특징은 객체 생성 후 후처리가 필요한 경우에 문제가 될 수 있다.
+후처리 함수를 호출하지 않거나, 함수의 존재를 몰라 새롭게 후처리 코드를 추가하는 일은 흔하게 발생한다.
+**팩토리 메소드 패턴**은 이런 문제를 방지할 때 필요하다.
+
+## **Factory Method Pattern**
+**팩토리 메소드 패턴**은 구상 팩토리 클래스에 의존하지 않고, 객체 생성에 인터페이스를 제공하는 것이다.
+아래는 이해를 돕기 위한 예제다.
+
+```C++
+class PizzaStore
+{
+public:
+    Pizza orderPizza(String type)
+    {
+        Pizza* pizza = createPizza(type);
+        pizza->prepared();
+        pizza->bake();
+        pizza->cut();
+        pizza->box();
+        return pizza;
+    }
+
+    virtual Pizza* createPizza(string type);
 }
 ```
 
-# **Abstract Factory Pattern**
+원래는 클래스의 인스턴스를 만드는 일을 `PizzaStore` 클래스에서 전부 처리하는 방식이었다면, 지금은 `PizzaStore`을 상속받는 서브클래스가 처리하는 방식으로 바뀌었다.
+팩토리 클래스의 인스턴스에 의존적이었던 기존 코드에서 의존성이 제거되었다.
 
-## 추상 팩토리 패턴이란?
-**추상 팩토리 패턴**은 생성 패턴 중 하나이다. 서로 연관있는 객체들의 조합이 필요할 때 사용한다. 팩토리 메소드 패턴과 마찬가지로 추상화와 캡슐화를 통해 팩토리 클래스를 만든 다음에, 만들어진 팩토리 클래스를 이용하는 상위 팩토리를 만들어 객체를 생성한다.
+팩토리 메소드를 정리하자면 다음과 같다.
+- 팩토리 메소드 패턴은 객체를 생성할 때 필요한 인터페이스를 만든다.
+- 어떤 클래스의 인스턴스를 만들지는 서브클래스에서 결정한다
+- 팩토리 메서드 패턴을 사용하면 클래스 인스턴스 생성을 서브클래스에 맡기게 된다.
 
-## 예제
+## **Abstract Factory Pattern**
 
+**추상 팩토리 패턴**은 객체의 생성 과정을 추상 팩토리 객체를 이용해 진행한다.
+이 방식은 제품군을 만들 때 유용하다.
+예를 들어 컴퓨터를 만드려고 한다면, OS와 모니터, 본체, 주변 기기들을 만드는
+팩토리가 필요할 것이다.
+OS의 팩토리는 마이크로소프트와 애플이 있을 것이고, 모니터는 LG와 삼성, 주변 기기들도 마찬가지로
+다양한 팩토리를 가지고 있을 것이다.
+이처럼 구상 팩토리 클래스를 구현하고, 실제로 팩토리를 사용할 때는 추상 팩토리의 인터페이스를 호출함으로서 의존성을 제거한다.
 
 ```C++
-enum UnitType
-{
-    Marine,
-    Firebat,
-    //...
-}
-
-class Unit
-{
-    //...
-}
-
-/*
-다양한 유닛 클래스 생략
-etc
-
-class Marine : public Unit
-{
-    //...
-}
-
-class Firebat : public Unit
-{
-    //...
-}
-*/
-
-class Building
+class AbstractFactory
 {
 public:
-    Unit createUnit(UnitType unitType);
+    virtual PartA* CreatePartA();
+    virtual PartB* CreatePartB();
 }
 
-class Barracks : public Building
+class ConcreteFactory1
 {
-    //...
-}
-
-class Starport : public Building
-{
-    //...
-}
-
-class Gate : public Building
-{
-    //...
-}
-
-class Stargate : public Building
-{
-    //...
-}
-
-class Brood
-{
-private:
-    Building tier1Building;
-    Building tier2Building;
 public:
-    Building getTier1Building();
-    Building getTier2Building();
-}
-
-class Terran : public Brood
-{
-    Terran()
+    virtual PartA* CreatePartA()
     {
-        tier1Building = new Barracks();
-        tier2Building = new Starport();
+        //...
     }
-
-    ~Terran()
+    
+    virtual PartB* CreatePartB()
     {
-        delete tier1Building;
-        delete tier2Building;
+        //...
     }
 }
 
-class Protoss : public Brood
+class ConcreteFactory2
 {
-
-    Protoss()
+public:
+    virtual PartA* CreatePartA()
     {
-        tier1Building = new Gate();
-        tier2Building = new Stargate();
+        //...
     }
-
-    ~Protoss()
+    
+    virtual PartB* CreatePartB()
     {
-        delete tier1Building;
-        delete tier2Building;
+        //...
     }
-}
-
-int main()
-{
-    Brood terran = new Terran();
-    Brood protoss = new Protoss();
-    terran.getTier1Building().createUnit(...);
-    terran.getTier2Building().createUnit(...);
-    protoss.getTier1Building().createUnit(...);
-    protoss.getTier2Building().createUnit(...);
-
-    delete terran;
-    delete protoss;
-    return 0;
 }
 ```
 
-## 추상 팩토리 vs 팩토리 메소드
-둘다 팩토리 객체를 통해 구체적인 타입을 감추고 객체 생성에 관여하는 패턴 임에는 동일하다. 또한 공장 클래스가 제품 클래스를 각각 나뉘어 느슨한 결합 구조를 구성하는 모습 역시 둘이 유사하다.
-
-그러나 주의할 것은 추상 팩토리 패턴이 팩토리 메서드 패턴의 상위 호환이 아니라는 점이다. 두 패턴의 차이는 명확하기 때문에 상황에 따라 적절한 선택을 해야 한다.예를들어 팩토리 메서드 패턴은 객체 생성 이후 해야 할 일의 공통점을 정의하는데 초점을 맞추는 반면, 추상 팩토리 패턴은 생성해야 할 객체 집합 군의 공통점에 초점을 맞춘다.
-
-단, 이 둘을 유사점과 차이점을 조합해서 복합 패턴을 구성하는 것도 가능하다.
-
-<table>
-    <tr>
-        <th></th>
-        <th>팩토리 메서드</th>
-        <th>추상 팩토리</th>
-    </tr>
-    <tr>
-        <td>공통점</td>
-        <td colspan="2">객체 생성 과정을 추상화한 인터페이스를 제공<br/>객체 생성을 캡슐화함으로써 구체적인 타입을 감추고 느슨한 결합 구조를 표방</td>
-    </tr>
-    <tr>
-        <td>차이점</td>
-        <td>구체적인 객체 생성과정을 하위 또는 구체적인<br/>클래스로 옮기는 것이 목적</td>
-        <td>
-            관련 있는 여러 객체를 구체적인 클래스에<br/>의존하지 않고 만들 수 있게 해주는 것이 목적
-            <br/><br/>
-            한 Factory에서 서로 연관된 여러 종류의<br/>객체 생성을 지원
-            <br/><br/>
-            클래스 레벨에서 포커스를 맞춤으로써<br/>클라이언트의 ConcreteProduct 인스턴스 군의<br/>생성 및 구성에 대한 의존을 감소
-        </td>
-    </tr>
-</table>
-
-### 출처
-- [추상 팩토리 패턴 vs 팩토리 메소드 패턴](https://inpa.tistory.com/entry/GOF-💠-추상-팩토리Abstract-Factory-패턴-제대로-배워보자#abstract_factory_vs_factory_method)
+### 참고
+- [헤드퍼스트 디자인패턴 개정판](https://www.yes24.com/Product/Goods/108192370?pid=123487&cosemkid=go16481149710577107&utm_source=google_pc&utm_medium=cpc&utm_campaign=book_pc&utm_content=ys_240530_google_pc_cc_book_pc_12203%EB%8F%84%EC%84%9C&utm_term=%ED%97%A4%EB%93%9C%ED%8D%BC%EC%8A%A4%ED%8A%B8%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4&gad_source=1&gclid=CjwKCAiA5Ka9BhB5EiwA1ZVtvJslHKzenw6UU2fr3tyJDb4AKzJ7X-O2jE42dZHrC54wdt-Lxu-ZWhoCjasQAvD_BwE)
