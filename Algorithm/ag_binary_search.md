@@ -32,16 +32,20 @@ const search = (nums, target) => {
 const binary_search = (nums, target, lo, hi) => {
   if (lo > hi) return -1;
 
+  // 범위 중간요소 mid 계산
   const mid = lo + Math.floor((hi - lo + 1) / 2);
 
+  // 타겟이 같다면, 탐색 성공
   if (nums[mid] === target) {
     return mid;
   }
 
+  // 타겟이 작다면, 최대 경계인 hi 를 변경
   if (nums[mid] > target) {
     return binary_search(nums, target, lo, mid - 1);
   }
 
+  // 타겟이 크다면, 최소 경계인 lo 를 변경
   if (nums[mid] < target) {
     return binary_search(nums, target, mid + 1, hi);
   }
@@ -50,17 +54,22 @@ const binary_search = (nums, target, lo, hi) => {
 
 ## 구현 방법 2 - 반복
 
+- 앞선 재귀와 다르게,
+
 ```javascript
 const search = (nums, target) => {
   let lo = 0;
   let hi = nums.length - 1;
 
+  // 타겟이 같다면 (lo === hi), 탐색 성공
   while (lo < hi) {
     let mid = lo + Math.floor((hi - lo + 1) / 2);
 
     if (target < nums[mid]) {
+      // 타겟이 작다면, 최대 경계인 hi 를 변경
       hi = mid - 1;
     } else if (target >= nums[mid]) {
+      // 타겟이 크다면, 최소 경계인 lo 를 변경
       lo = mid;
     }
   }
