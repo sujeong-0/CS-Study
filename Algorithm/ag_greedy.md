@@ -87,3 +87,9 @@ const minimumCost = (cost) => {
       continue;
       }
   ```
+
+# 출처
+
+- [[Java/알고리즘] 그리디 알고리즘(탐욕법, Greedy Algorithm) 이해하기](<https://adjh54.tistory.com/212#2%EB%8B%A8%EA%B3%84%20%3A%20%EC%A0%81%EC%A0%88%EC%84%B1%20%EA%B2%80%EC%82%AC(Feasibility%20Check)-1-6>)
+- [그리디 알고리즘(Greedy Algorithm, 탐욕법)](https://velog.io/@kyunghwan1207/%EA%B7%B8%EB%A6%AC%EB%94%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98Greedy-Algorithm-%ED%83%90%EC%9A%95%EB%B2%95#%EB%AC%B8%EC%A0%9C1-1%EC%9D%B4-%EB%90%A0-%EB%95%8C%EA%B9%8C%EC%A7%80)
+- [Minimum Cost of Buying Candies With Discount](https://leetcode.com/problems/minimum-cost-of-buying-candies-with-discount/description/)
