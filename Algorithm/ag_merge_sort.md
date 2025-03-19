@@ -64,13 +64,14 @@ import java.util.Arrays;
 
 public class MergeSort {
 
-	// 병합 단계: 두 정렬된 배열을 하나로 합침
+	// 두 정렬된 배열(left와 right)을 병합하여 하나의 정렬된 배열을 반환하는 메서드
 	public static int[] merge(int[] left, int[] right) {
-		int[] merged = new int[left.length + right.length];
-		int leftPointer = 0;
-		int rightPointer = 0;
-		int mergeIndex = 0;
+		int[] merged = new int[left.length + right.length]; // 병합 결과를 저장할 배열
+		int leftPointer = 0;    // left 배열의 현재 인덱스
+		int rightPointer = 0;   // right 배열의 현재 인덱스
+		int mergeIndex = 0;     // merged 배열의 현재 인덱스
 
+		// 두 배열의 요소를 비교하여 작은 값부터 merged 배열에 추가
 		while (leftPointer < left.length && rightPointer < right.length) {
 			if (left[leftPointer] > right[rightPointer]) {
 				merged[mergeIndex++] = right[rightPointer++];
@@ -79,39 +80,48 @@ public class MergeSort {
 			}
 		}
 
+		// left 배열에 남은 요소들을 merged 배열에 추가
 		while (leftPointer < left.length) {
 			merged[mergeIndex++] = left[leftPointer++];
 		}
 
+		// right 배열에 남은 요소들을 merged 배열에 추가
 		while (rightPointer < right.length) {
 			merged[mergeIndex++] = right[rightPointer++];
 		}
 
-		return merged;
+		return merged;  // 정렬된 병합 배열 반환
 	}
 
-	// 합병 정렬: 배열을 분할하고 병합하는 재귀적 과정
+	// 합병 정렬(Merge Sort) 재귀 메서드
+	// 주어진 배열을 재귀적으로 반으로 나누고, 각 부분을 정렬 후 병합하여 전체 배열을 정렬
 	public static int[] mergeSort(int[] arr) {
+		// 배열의 길이가 1 이하이면 이미 정렬된 상태이므로 그대로 반환
 		if (arr.length <= 1) {
-			return arr; // 기저 조건: 배열이 1개 이하이면 정렬된 상태로 간주
+			return arr;
 		}
 
+		// 배열을 두 부분으로 분할
 		int mid = arr.length / 2;
-		int[] left = Arrays.copyOfRange(arr, 0, mid);
-		int[] right = Arrays.copyOfRange(arr, mid, arr.length);
+		int[] left = Arrays.copyOfRange(arr, 0, mid);          // 왼쪽 부분 배열
+		int[] right = Arrays.copyOfRange(arr, mid, arr.length);  // 오른쪽 부분 배열
 
+		// 재귀적으로 각각의 부분 배열을 정렬
 		left = mergeSort(left);
 		right = mergeSort(right);
 
+		// 정렬된 두 부분 배열을 병합하여 하나의 정렬된 배열로 반환
 		return merge(left, right);
 	}
 
+	// 메인 메서드: 합병 정렬을 테스트하는 용도
 	public static void main(String[] args) {
-		int[] arr = {5, 4, 1, 9, 3, 7, 2, 6};
-		int[] sorted = mergeSort(arr);
-		System.out.println(Arrays.toString(sorted));
+		int[] arr = {5, 4, 1, 9, 3, 7, 2, 6};  // 정렬할 배열
+		int[] sorted = mergeSort(arr);           // 배열 정렬 수행
+		System.out.println(Arrays.toString(sorted)); // 정렬된 배열 출력
 	}
 }
+
 
 ```
 
