@@ -8,3 +8,11 @@
     - B-Tree
 - 조인
     - 종류, 원리
+- 분산 데이터베이스의 개념
+- Event Sourcing & CQRS
+- 백업과 복구(Backup & Recovery)
+- 데이터 마이그레이션 전략
+- 실행 계획(EXPLAIN) 분석
+- Query Optimization (Slow Query Tuning)
+- 파티셔닝(Partitioning)과 샤딩(Sharding)
+- 캐싱
