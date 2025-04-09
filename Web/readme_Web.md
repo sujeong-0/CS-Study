@@ -1,6 +1,5 @@
 # 웹
 - RESTful API
-- Cookie / Session / Token 개요
 - JWT 토큰
 - Web Server & WAS
 - Sync / Async
