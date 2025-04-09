@@ -3,7 +3,6 @@
 - Cookie / Session / Token 개요
 - JWT 토큰
 - Web Server & WAS
-- CORS
 - Sync / Async
 - Blocking / Non-Blocking
 - OAuth
