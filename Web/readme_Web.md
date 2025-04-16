@@ -1,7 +1,12 @@
 # 웹
 - RESTful API
-- cookie & session & token
-- web server & WAS
-- CORS
-- Frontend
-- Backend
+- JWT 토큰
+- Web Server & WAS
+- Sync / Async
+- Blocking / Non-Blocking
+- OAuth
+- CDN
+- SEO
+- GraphQL
+- SSR 과 CSR
+- CSRF
