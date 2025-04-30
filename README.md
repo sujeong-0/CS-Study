@@ -15,10 +15,10 @@
 - **추가하고 싶은 주제가 있다면 자유롭게** 말씀해주세요. 상의를 통해 자유롭게 추가할 수 있습니다.
 
 ## 주제
-- [자료구조](https://github.com/Hi-Tech-Study/CS-Study/blob/main/Data%20Structure/readme_DS.md)
+- [자료구조](https://github.com/Hi-Tech-Study/CS-Study/blob/main/Data_Structure/readme_DS.md)
 - [네트워크](https://github.com/Hi-Tech-Study/CS-Study/blob/main/Network/readme_NW.md)
 - [운영체제](https://github.com/Hi-Tech-Study/CS-Study/blob/main/OS/readme_OS.md)
 - [데이터베이스](https://github.com/Hi-Tech-Study/CS-Study/blob/main/Database/readme_DB.md)
-- [디자인패턴](https://github.com/Hi-Tech-Study/CS-Study/blob/main/Design%20Pattern/readme_DP.md)
+- [디자인패턴](https://github.com/Hi-Tech-Study/CS-Study/blob/main/Design_Pattern/readme_DP.md)
 - [Web](https://github.com/Hi-Tech-Study/CS-Study/blob/main/Web/readme_Web.md)
 - [알고리즘](https://github.com/Hi-Tech-Study/CS-Study/blob/main/Algorithm/readme_AG.md)
